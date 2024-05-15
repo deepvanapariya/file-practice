@@ -27,9 +27,9 @@ app.get("/", (req, res) => {
 })
 
 
-app.post("/upload", upload.single("profieImage"), (req, res) => {
+app.post("/upload", upload.fields([{ name: "profieImage" }, { name: "coverImage" }]), (req, res) => {
     console.log(req.body)
-    console.log(req.file.path)//can store in database and use it
+    console.log(req.file)//can store in database and use it
     return res.redirect("/");
 
 })
